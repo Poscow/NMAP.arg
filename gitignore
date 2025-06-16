@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+*.log
+ip_log.txt
+nmap_custom_settings.txt
