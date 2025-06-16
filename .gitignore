@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.log
+.DS_Store
+*.swp
+ip_log.txt
+nmap_results/
+*.bak
+venv/
+*.env
