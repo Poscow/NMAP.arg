@@ -1,11 +1,8 @@
-**NMAP.ARG** is a custom Nmap Python terminal emulator that allows for scanning, logging IPs, customizing settings, and more.
+*NMAP.ARG* Automatic NMAP scanner that allows for scanning, logging, and saving custom settings.
+This is my first Python project that is over 200 lines long.
+Some of the code is not mine, I've tweaked and tuned some code from the Internet, all else is mine.
+Bare in mind NMAP.ARG is prone to many bugs and is very janky.
 
-## Features
-- Interactive `TERM>` prompt with commands
-- IP logging and selection from `ip_log.txt`
-- File saving and autosaving options
-- Custom scan settings
-- Detects if Nmap is installed
 ## Requirements
 - Python 3.6+
 - [Nmap](https://nmap.org/download.html) installed and added to PATH
