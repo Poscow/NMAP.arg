@@ -47,12 +47,14 @@ def print_banner():
 
 def save_setting(setting):
     settings = {}
+    valid_keys = {"autosave", "filesaving", "iplog"} 
     if os.path.exists(custom_settings_file):
         with open(custom_settings_file, "r") as f:
             for line in f:
                 if line.strip():
                     key = line.split()[0]
-                    settings[key] = line.strip()
+                    if key in valid_keys:  
+                        settings[key] = line.strip()
 
     key = setting.split()[0]
     settings[key] = setting
@@ -230,7 +232,6 @@ def NMAPexecute(choice):
             print(Fore.RED + "Invalid option.")
 
 
-#class because why not
 class TermMode:
     def __init__(self):
         self.commands = {
@@ -242,7 +243,7 @@ class TermMode:
             "clear": self.clear,
             "clear settings": self.clear,
             "autosave": self.autosave,
-            "filesave": self.filesave,
+            "filesaving": self.filesaving, 
             "iplog": self.iplog,
             "ipselect": self.ipselect,
             "ip": self.ip,
@@ -283,7 +284,7 @@ class TermMode:
         print(Fore.BLUE + "  list settings, list iplog")
         print(Fore.RED + "  clear, clear iplog, clear settings")
         print(Fore.YELLOW + "  autosave true/false/status")
-        print(Fore.YELLOW + "  filesave true/false/status")
+        print(Fore.YELLOW + "  filesaving true/false/status") 
         print(Fore.WHITE + "  iplog true/false/status")
         print(Fore.WHITE + "  ipselect iplog [line_number]")
         print(Fore.WHITE + "  ip")
@@ -341,8 +342,8 @@ class TermMode:
     def autosave(self, parts):
         self.setting(parts, "autosave")
 
-    def filesave(self, parts):
-        self.setting(parts, "filesave")
+    def filesaving(self, parts): 
+        self.setting(parts, "filesaving")
 
     def iplog(self, parts):
         self.setting(parts, "iplog")
@@ -355,7 +356,7 @@ class TermMode:
         if action in ["true", "false"]:
             if setting_type == "autosave" and action == "true" and not file_saving:
                 print(Fore.RED + "Cannot enable autosave while file saving is disabled.")
-            elif setting_type == "filesave" and action == "false" and auto_save:
+            elif setting_type == "filesaving" and action == "false" and auto_save:
                 print(Fore.RED + "Disable auto-save first before disabling file saving.")
             else:
                 try:
